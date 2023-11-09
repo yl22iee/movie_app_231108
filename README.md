@@ -3,7 +3,9 @@
 # 설치항목
 
 -[] styled-components
+=> npm i styled-components
 -[] react-router-dom
+npm i react-router-dom
 -[] 스타일 리셋
 -[] 폼 관련
 -[] 타이틀 관련
