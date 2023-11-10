@@ -1,4 +1,4 @@
-import { styled } from "styled-components";
+import styled from "styled-components";
 
 const MainBanner = styled.section`
   height: 80vh;
@@ -42,15 +42,16 @@ const BlackBg = styled.div`
 
 export const Home = () => {
   return (
-    <MainBanner>
-      <BlackBg>
-        <h3>Five_night_at_Freddy</h3>
+    <div>
+      <MainBanner>
+        <BlackBg />
+        <h3>프레디의 피자가게</h3>
         <p>
           80년대에 아이들이 실종되고 폐업한지 오래된 프레디의 피자가게 그곳의
           야간 경비 알바를 하게 된 ‘마이크'는 캄캄한 어둠만이 존재하는 줄 알았던
           피자가게에서 살아 움직이는 피자가게...
         </p>
-      </BlackBg>
-    </MainBanner>
+      </MainBanner>
+    </div>
   );
 };

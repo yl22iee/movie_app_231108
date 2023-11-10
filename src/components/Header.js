@@ -3,13 +3,13 @@ import { routes } from "../routes";
 import { styled } from "styled-components";
 
 const WHeader = styled.header`
-  padding: 20px 5%;
   width: 100%;
+  padding: 20px 5%;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
   a {
-    /* color: white; */
+    color: white;
   }
   position: fixed;
   top: 0;
