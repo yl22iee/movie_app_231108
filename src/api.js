@@ -13,6 +13,8 @@ const options = {
   },
 };
 
-export const nowPlaying = fetch(nowPlayingurl, options).then(
-  (res) => res.json() // <= fetch()알아와야 함
-);
+export const nowPlaying = () =>
+  fetch(nowPlayingurl, options).then(
+    (res) => res.json() // <= fetch()알아와야 함
+  );
+//   위의 내용들을 한꺼번에 사용하기 위해서 fetch함수로 묶어서 사용해줬음

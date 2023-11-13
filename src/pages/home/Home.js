@@ -1,4 +1,6 @@
+import { useEffect, useState } from "react";
 import styled from "styled-components";
+import { nowPlaying } from "../../api";
 
 const MainBanner = styled.section`
   height: 80vh;
@@ -41,17 +43,40 @@ const BlackBg = styled.div`
 `;
 
 export const Home = () => {
+  const [nowPlayingData, setNowPlayingData] = useState();
+  const [loading, setLoaing] = useState(true);
+
+  useEffect(() => {
+    (async () => {
+      try {
+        const { results } = await nowPlaying(); // 비구조화 할당
+        setNowPlayingData(results); // 지역함수의 변수를 외부에서 사용하기 위해 변수에 담았음
+        setLoaing(false);
+        // console.log(results[1].title);
+      } catch (error) {
+        console.log("에러" + error);
+      } // try, catch는 예외처리를 하기 위해서 만들어줬음
+    })();
+  }, []);
+
+  console.log(loading);
+  console.log(nowPlayingData);
+
   return (
-    <div>
-      <MainBanner>
-        <BlackBg />
-        <h3>프레디의 피자가게</h3>
-        <p>
-          80년대에 아이들이 실종되고 폐업한지 오래된 프레디의 피자가게 그곳의
-          야간 경비 알바를 하게 된 ‘마이크'는 캄캄한 어둠만이 존재하는 줄 알았던
-          피자가게에서 살아 움직이는 피자가게...
-        </p>
-      </MainBanner>
-    </div>
+    <>
+      {loading ? ( // loading이 참이라면 "loading"을 출력하고
+        "loading..."
+      ) : (
+        <div>
+          {nowPlayingData && (
+            <MainBanner>
+              <BlackBg />
+              <h3>{nowPlayingData[0].title}</h3>
+              <p>{nowPlayingData[0].overview}</p>
+            </MainBanner>
+          )}
+        </div>
+      )}
+    </>
   );
 };
