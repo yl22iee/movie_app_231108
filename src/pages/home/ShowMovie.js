@@ -59,11 +59,11 @@ const params = {
   },
 };
 
-export const ShowMovie = ({ moviedata }) => {
+export const ShowMovie = ({ titleName, moviedata }) => {
   return (
     <div>
       <Container>
-        <Title>현재 상영 영화</Title>
+        <Title>{titleName}</Title>
         {/* Title을 매개변수로 해둘것 */}
 
         <Swiper {...params}>
