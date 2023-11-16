@@ -1,18 +1,25 @@
 import { useEffect, useState } from "react";
 // import styled from "styled-components";
-import { nowPlaying } from "../../api";
+import { nowPlaying, popular } from "../../api";
 import { Banner } from "./Banner";
 import { ShowMovie } from "./ShowMovie";
+import { Layout } from "../../components/Layout";
 
 export const Home = () => {
   const [nowPlayingData, setNowPlayingData] = useState();
+  const [popData, setPopData] = useState();
   const [isloading, setIsLoaing] = useState(true);
 
   useEffect(() => {
     (async () => {
       try {
-        const { results } = await nowPlaying(); // 비구조화 할당
-        setNowPlayingData(results); // 지역함수의 변수를 외부에서 사용하기 위해 변수에 담았음
+        const { results: nowResults } = await nowPlaying(); // 비구조화 할당 ,(results =>  nowResults로변경)
+        setNowPlayingData(nowResults); // 지역함수의 변수를 외부에서 사용하기 위해 변수에 담았음
+
+        const { results: popResults } = await popular();
+        setPopData(popResults);
+        // console.log(popResults);
+
         setIsLoaing(false); // 위에 내용들을 실행했다면 setIsLoading은 false가 되어...?
         // console.log(results[1].title);
       } catch (error) {
@@ -21,8 +28,10 @@ export const Home = () => {
     })();
   }, []);
 
+  // console.log(popData);
+
   console.log(isloading);
-  console.log(nowPlayingData);
+  // console.log(nowPlayingData);
 
   return (
     <>
@@ -32,7 +41,10 @@ export const Home = () => {
         // 조건2. loading이 참이 아니라면 ...
         <div>
           <Banner data={nowPlayingData[0]} />
-          <ShowMovie moviedata={nowPlayingData} />
+          <Layout>
+            <ShowMovie moviedata={nowPlayingData} />
+            <ShowMovie moviedata={popData} />
+          </Layout>
         </div>
       )}
     </>

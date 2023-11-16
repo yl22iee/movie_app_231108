@@ -4,8 +4,8 @@ import "swiper/css";
 import { Link } from "react-router-dom";
 import { IMG_URL } from "./constants";
 
-const Layout = styled.div`
-  padding: 150px 5%;
+const Container = styled.div`
+  margin-bottom: 80px;
   a {
     color: white;
   }
@@ -41,8 +41,8 @@ const MovieTitle = styled.div`
 `;
 
 const params = {
-  spaceBetween: 20,
-  slidesPerView: 5.5,
+  spaceBetween: 15,
+  slidesPerView: 6.5,
   breakpoints: {
     1024: {
       spaceBetween: 20,
@@ -62,8 +62,9 @@ const params = {
 export const ShowMovie = ({ moviedata }) => {
   return (
     <div>
-      <Layout>
+      <Container>
         <Title>현재 상영 영화</Title>
+        {/* Title을 매개변수로 해둘것 */}
 
         <Swiper {...params}>
           {moviedata.map((mapdata) => (
@@ -74,8 +75,9 @@ export const ShowMovie = ({ moviedata }) => {
               </Link>
             </SwiperSlide>
           ))}
+          {/* {moviedata.map((data) => "")} */}
         </Swiper>
-      </Layout>
+      </Container>
     </div>
   );
 };
