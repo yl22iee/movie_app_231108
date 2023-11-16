@@ -19,3 +19,6 @@ npm i react-router-dom
 -[] home 컴포넌트 구성
 -[] Detail 컴포넌트 구성
 -[] Search 컴포넌트 구성
+-[] header스크롤 이벤트 설정
+-[] 전체 페이지 helmet 구성
+-[] 404 page ui 구성

@@ -22,4 +22,9 @@ export const nowPlaying = () =>
 export const popular = () =>
   fetch(popularUrl, options).then((res) => res.json());
 
+export const movieDetail = (id) => {
+  const detailUrl = baseUrl + `movie/${id}` + "?language=ko-kr";
+  return fetch(detailUrl, options).then((res) => res.json());
+};
+
 //   위의 내용들을 한꺼번에 사용하기 위해서 fetch함수로 묶어서 사용해줬음

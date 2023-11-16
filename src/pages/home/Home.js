@@ -4,6 +4,7 @@ import { nowPlaying, popular } from "../../api";
 import { Banner } from "./Banner";
 import { ShowMovie } from "./ShowMovie";
 import { Layout } from "../../components/Layout";
+import { PageTitle } from "../../components/PageTitle";
 
 export const Home = () => {
   const [nowPlayingData, setNowPlayingData] = useState();
@@ -40,6 +41,7 @@ export const Home = () => {
       ) : (
         // 조건2. loading이 참이 아니라면 ...
         <div>
+          {/* <PageTitle titleName={"Nexflex"} /> */}
           <Banner data={nowPlayingData[0]} />
           <Layout>
             <ShowMovie moviedata={nowPlayingData} />
