@@ -4,7 +4,7 @@ import { nowPlaying, popular, toprate, upcoming } from "../../api";
 import { Banner } from "./Banner";
 import { ShowMovie } from "./ShowMovie";
 import { Layout } from "../../components/Layout";
-import { PageTitle } from "../../components/PageTitle";
+import { Loading } from "./Loading";
 
 export const Home = () => {
   const [nowPlayingData, setNowPlayingData] = useState();
@@ -46,8 +46,10 @@ export const Home = () => {
   return (
     <>
       {isloading ? ( // 조건1. loading이 참이라면 "loading"을 출력하고
-        "loading..."
+        // <GridLoader color="#36d7b7" />
+        <Loading />
       ) : (
+        // <Loading />
         // 조건2. loading이 참이 아니라면 ...
         <div>
           {/* <PageTitle titleName={"Nexflex"} /> */}
@@ -59,7 +61,7 @@ export const Home = () => {
             />
             <ShowMovie titleName={"인기 영화"} moviedata={popData} />
             <ShowMovie titleName={"영화 최고 순위"} moviedata={topData} />
-            <ShowMovie titleName={"업로드 예정"} moviedata={upcomingData} />
+            <ShowMovie titleName={"개봉 예정 영화"} moviedata={upcomingData} />
           </Layout>
         </div>
       )}
