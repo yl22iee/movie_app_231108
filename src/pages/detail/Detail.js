@@ -4,6 +4,7 @@ import { movieDetail } from "../../api";
 import { Loading } from "../home/Loading";
 import { styled } from "styled-components";
 import { IMG_URL } from "../home/constants";
+import { useScroll } from "../../lb/useScroll";
 
 const ConWrap = styled.div`
   padding: 200px;
@@ -61,6 +62,7 @@ export const Detail = () => {
   const { id } = useParams();
   const [detailData, setDetailData] = useState();
   const [loading, setLoading] = useState(true);
+  useScroll();
 
   useEffect(() => {
     (async () => {
